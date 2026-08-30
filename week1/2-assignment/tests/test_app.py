@@ -1,4 +1,4 @@
-from app import load_report
+from app import clean_text, load_report
 
 
 def test_load_report(tmp_path):
@@ -11,3 +11,11 @@ def test_load_report(tmp_path):
     text = load_report(report)
 
     assert text == "AI assists software engineering."
+
+
+def test_clean_text_converts_mixed_case_to_lowercase():
+    text = "AI Assists SOFTWARE Engineering."
+
+    cleaned_text = clean_text(text)
+
+    assert cleaned_text == "ai assists software engineering."
