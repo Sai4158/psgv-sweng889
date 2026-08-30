@@ -7,7 +7,7 @@ def load_report(file_path):
 
 
 def clean_text(text):
-    return text
+    return text.lower()
 
 
 def generate_wordcloud(text, output_path):
