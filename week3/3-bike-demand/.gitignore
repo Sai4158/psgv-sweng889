@@ -1,0 +1,23 @@
+# Generated data and models (should not be committed)
+data/processed/
+models/
+predictions/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Environment
+.env
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+*.zip
