@@ -127,6 +127,32 @@ comes from the Supplier Information Tool, while LangChain and Ollama remain
 part of the workflow. Baseline evidence is in `baseline_outputs.txt`, and
 modified evidence is in `modified_outputs.txt`.
 
+### Baseline vs. Modified Results
+
+**Request 1:** "The factory needs 700 units within 6 days. Recommend the best
+supplier and explain the decision."
+
+- Baseline: Run 1 - Verinox Supply; Run 2 - Verinox Supply.
+- Modified: Run 1 - Verinox Supply; Run 2 - Verinox Supply.
+
+The recommendation stayed the same because Verinox Supply was the only supplier
+that satisfied both constraints: capacity 800 >= 700 and delivery 4 <= 6 days.
+
+**Request 2:** "The factory needs 250 units within 5 days at the lowest possible
+cost. Recommend the best supplier and explain the decision."
+
+- Baseline: Run 1 - Dalby Metalworks; Run 2 - Verinox Supply.
+- Modified: Run 1 - Dalby Metalworks; Run 2 - Dalby Metalworks.
+
+The baseline was inconsistent. The modified system consistently selected Dalby
+Metalworks because both Dalby and Verinox were feasible, but Dalby had the lower
+price ($3.85 versus $6.40), matching the explicit lowest-cost priority.
+
+The baseline LLM sometimes made incorrect numerical comparisons. The final
+system preserves LangChain and Ollama while adding deterministic validation for
+hard constraints and supplier facts. The 2,000-unit, 1-day test correctly
+returned "No feasible supplier."
+
 ---
 
 ## Things worth noticing when you run it

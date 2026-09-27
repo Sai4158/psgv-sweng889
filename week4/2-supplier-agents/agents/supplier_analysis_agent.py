@@ -10,7 +10,7 @@ import re
 from common import ask, banner
 from tools.supplier_tool import supplier_information
 
-# TODO 2: reject infeasible suppliers before applying user priorities.
+# Assignment modification (completed TODO 2): reject infeasible suppliers before applying user priorities.
 ANALYSIS_PROMPT = """You are the Supplier Analysis Agent for a factory.
 
 Criteria identified by the Buyer Agent:
