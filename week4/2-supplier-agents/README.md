@@ -119,6 +119,16 @@ whichever supplier the agent named, which is what TODO 3 needs.
 
 ---
 
+## Lesson 4 Assignment Modification
+
+TODO 2 was completed. Capacity and deadline are hard constraints, and explicit
+user priorities such as lowest cost are respected. Supplier information still
+comes from the Supplier Information Tool, while LangChain and Ollama remain
+part of the workflow. Baseline evidence is in `baseline_outputs.txt`, and
+modified evidence is in `modified_outputs.txt`.
+
+---
+
 ## Things worth noticing when you run it
 
 Small models are not careful readers. Look for these in your output, because

@@ -1,0 +1,381 @@
+SWENG 889 Lesson 4 - Modified System Evidence
+================================================
+
+Model: qwen2.5:1.5b
+Command used for each captured run:
+docker compose run --rm agent-app
+
+
+Request 1 - Run 1
+=================
+
+Exact request:
+The factory needs 700 units within 6 days. Recommend the best supplier and explain the decision.
+
+Exact terminal output:
+
+ Container sweng889-supplier-agents-ollama  Running
+
+Supplier selection multi-agent system   (model: qwen2.5:1.5b)
+
+  1. Run the default factory request
+  2. Enter your own factory request
+  3. Show the supplier catalogue (tool output only)
+  q. Quit
+
+Choose an option: 
+Factory request: 
+====================================================================
+  Factory user  ->  Buyer Agent
+====================================================================
+The factory needs 700 units within 6 days. Recommend the best supplier and explain the decision.
+
+====================================================================
+  Buyer Agent: identifying the decision criteria
+====================================================================
+The factory needs to find a supplier capable of delivering 700 units within 6 days.
+
+====================================================================
+  Supplier Analysis Agent  ->  Supplier Information Tool
+====================================================================
+Component: CX-14 hydraulic valve  (prices in USD)
+- NorthForge Components | price per unit: $4.20 | delivery: 12 days | reliability: 0.97 | capacity: 1000 units
+- Kestrel Industrial | price per unit: $5.10 | delivery: 6 days | reliability: 0.94 | capacity: 600 units
+- Dalby Metalworks | price per unit: $3.85 | delivery: 5 days | reliability: 0.71 | capacity: 250 units
+- Verinox Supply | price per unit: $6.40 | delivery: 4 days | reliability: 0.99 | capacity: 800 units
+- Oriol Parts Co | price per unit: $4.75 | delivery: 9 days | reliability: 0.88 | capacity: 500 units
+
+====================================================================
+  Supplier Analysis Agent: recommending
+====================================================================
+Requirements: quantity 700; deadline 6 days; priority none stated; balance all four attributes
+Supplier comparison (price; delivery; reliability; capacity):
+- NorthForge Components: price $4.20; delivery 12 <= 6 [FAIL]; reliability 0.97; capacity 1000 >= 700 [PASS]; INFEASIBLE
+- Kestrel Industrial: price $5.10; delivery 6 <= 6 [PASS]; reliability 0.94; capacity 600 >= 700 [FAIL]; INFEASIBLE
+- Dalby Metalworks: price $3.85; delivery 5 <= 6 [PASS]; reliability 0.71; capacity 250 >= 700 [FAIL]; INFEASIBLE
+- Verinox Supply: price $6.40; delivery 4 <= 6 [PASS]; reliability 0.99; capacity 800 >= 700 [PASS]; FEASIBLE
+- Oriol Parts Co: price $4.75; delivery 9 <= 6 [FAIL]; reliability 0.88; capacity 500 >= 700 [FAIL]; INFEASIBLE
+Recommendation: Verinox Supply
+Reason and trade-offs: Verinox Supply passes both hard constraints and is the best feasible match for none stated; balance all four attributes. The comparison shows all four attributes.
+
+====================================================================
+  Buyer Agent  ->  Factory user
+====================================================================
+Requirements: quantity 700; deadline 6 days; priority none stated; balance all four attributes
+Supplier comparison (price; delivery; reliability; capacity):
+- NorthForge Components: price $4.20; delivery 12 <= 6 [FAIL]; reliability 0.97; capacity 1000 >= 700 [PASS]; INFEASIBLE
+- Kestrel Industrial: price $5.10; delivery 6 <= 6 [PASS]; reliability 0.94; capacity 600 >= 700 [FAIL]; INFEASIBLE
+- Dalby Metalworks: price $3.85; delivery 5 <= 6 [PASS]; reliability 0.71; capacity 250 >= 700 [FAIL]; INFEASIBLE
+- Verinox Supply: price $6.40; delivery 4 <= 6 [PASS]; reliability 0.99; capacity 800 >= 700 [PASS]; FEASIBLE
+- Oriol Parts Co: price $4.75; delivery 9 <= 6 [FAIL]; reliability 0.88; capacity 500 >= 700 [FAIL]; INFEASIBLE
+Recommendation: Verinox Supply
+Reason and trade-offs: Verinox Supply passes both hard constraints and is the best feasible match for none stated; balance all four attributes. The comparison shows all four attributes.
+
+Supplier selection multi-agent system   (model: qwen2.5:1.5b)
+
+  1. Run the default factory request
+  2. Enter your own factory request
+  3. Show the supplier catalogue (tool output only)
+  q. Quit
+
+Choose an option: Goodbye.
+
+
+Request 1 - Run 2
+=================
+
+Exact request:
+The factory needs 700 units within 6 days. Recommend the best supplier and explain the decision.
+
+Exact terminal output:
+
+ Container sweng889-supplier-agents-ollama  Running
+
+Supplier selection multi-agent system   (model: qwen2.5:1.5b)
+
+  1. Run the default factory request
+  2. Enter your own factory request
+  3. Show the supplier catalogue (tool output only)
+  q. Quit
+
+Choose an option: 
+Factory request: 
+====================================================================
+  Factory user  ->  Buyer Agent
+====================================================================
+The factory needs 700 units within 6 days. Recommend the best supplier and explain the decision.
+
+====================================================================
+  Buyer Agent: identifying the decision criteria
+====================================================================
+The factory needs to find a supplier capable of delivering 700 units within 6 days.
+
+====================================================================
+  Supplier Analysis Agent  ->  Supplier Information Tool
+====================================================================
+Component: CX-14 hydraulic valve  (prices in USD)
+- NorthForge Components | price per unit: $4.20 | delivery: 12 days | reliability: 0.97 | capacity: 1000 units
+- Kestrel Industrial | price per unit: $5.10 | delivery: 6 days | reliability: 0.94 | capacity: 600 units
+- Dalby Metalworks | price per unit: $3.85 | delivery: 5 days | reliability: 0.71 | capacity: 250 units
+- Verinox Supply | price per unit: $6.40 | delivery: 4 days | reliability: 0.99 | capacity: 800 units
+- Oriol Parts Co | price per unit: $4.75 | delivery: 9 days | reliability: 0.88 | capacity: 500 units
+
+====================================================================
+  Supplier Analysis Agent: recommending
+====================================================================
+Requirements: quantity 700; deadline 6 days; priority none stated; balance all four attributes
+Supplier comparison (price; delivery; reliability; capacity):
+- NorthForge Components: price $4.20; delivery 12 <= 6 [FAIL]; reliability 0.97; capacity 1000 >= 700 [PASS]; INFEASIBLE
+- Kestrel Industrial: price $5.10; delivery 6 <= 6 [PASS]; reliability 0.94; capacity 600 >= 700 [FAIL]; INFEASIBLE
+- Dalby Metalworks: price $3.85; delivery 5 <= 6 [PASS]; reliability 0.71; capacity 250 >= 700 [FAIL]; INFEASIBLE
+- Verinox Supply: price $6.40; delivery 4 <= 6 [PASS]; reliability 0.99; capacity 800 >= 700 [PASS]; FEASIBLE
+- Oriol Parts Co: price $4.75; delivery 9 <= 6 [FAIL]; reliability 0.88; capacity 500 >= 700 [FAIL]; INFEASIBLE
+Recommendation: Verinox Supply
+Reason and trade-offs: Verinox Supply passes both hard constraints and is the best feasible match for none stated; balance all four attributes. The comparison shows all four attributes.
+
+====================================================================
+  Buyer Agent  ->  Factory user
+====================================================================
+Requirements: quantity 700; deadline 6 days; priority none stated; balance all four attributes
+Supplier comparison (price; delivery; reliability; capacity):
+- NorthForge Components: price $4.20; delivery 12 <= 6 [FAIL]; reliability 0.97; capacity 1000 >= 700 [PASS]; INFEASIBLE
+- Kestrel Industrial: price $5.10; delivery 6 <= 6 [PASS]; reliability 0.94; capacity 600 >= 700 [FAIL]; INFEASIBLE
+- Dalby Metalworks: price $3.85; delivery 5 <= 6 [PASS]; reliability 0.71; capacity 250 >= 700 [FAIL]; INFEASIBLE
+- Verinox Supply: price $6.40; delivery 4 <= 6 [PASS]; reliability 0.99; capacity 800 >= 700 [PASS]; FEASIBLE
+- Oriol Parts Co: price $4.75; delivery 9 <= 6 [FAIL]; reliability 0.88; capacity 500 >= 700 [FAIL]; INFEASIBLE
+Recommendation: Verinox Supply
+Reason and trade-offs: Verinox Supply passes both hard constraints and is the best feasible match for none stated; balance all four attributes. The comparison shows all four attributes.
+
+Supplier selection multi-agent system   (model: qwen2.5:1.5b)
+
+  1. Run the default factory request
+  2. Enter your own factory request
+  3. Show the supplier catalogue (tool output only)
+  q. Quit
+
+Choose an option: Goodbye.
+
+
+Request 2 - Run 1
+=================
+
+Exact request:
+The factory needs 250 units within 5 days at the lowest possible cost. Recommend the best supplier and explain the decision.
+
+Exact terminal output:
+
+ Container sweng889-supplier-agents-ollama  Running
+
+Supplier selection multi-agent system   (model: qwen2.5:1.5b)
+
+  1. Run the default factory request
+  2. Enter your own factory request
+  3. Show the supplier catalogue (tool output only)
+  q. Quit
+
+Choose an option: 
+Factory request: 
+====================================================================
+  Factory user  ->  Buyer Agent
+====================================================================
+The factory needs 250 units within 5 days at the lowest possible cost. Recommend the best supplier and explain the decision.
+
+====================================================================
+  Buyer Agent: identifying the decision criteria
+====================================================================
+The factory needs to find the cheapest supplier for 250 units within 5 days.
+
+====================================================================
+  Supplier Analysis Agent  ->  Supplier Information Tool
+====================================================================
+Component: CX-14 hydraulic valve  (prices in USD)
+- NorthForge Components | price per unit: $4.20 | delivery: 12 days | reliability: 0.97 | capacity: 1000 units
+- Kestrel Industrial | price per unit: $5.10 | delivery: 6 days | reliability: 0.94 | capacity: 600 units
+- Dalby Metalworks | price per unit: $3.85 | delivery: 5 days | reliability: 0.71 | capacity: 250 units
+- Verinox Supply | price per unit: $6.40 | delivery: 4 days | reliability: 0.99 | capacity: 800 units
+- Oriol Parts Co | price per unit: $4.75 | delivery: 9 days | reliability: 0.88 | capacity: 500 units
+
+====================================================================
+  Supplier Analysis Agent: recommending
+====================================================================
+Requirements: quantity 250; deadline 5 days; priority lowest price per unit
+Supplier comparison (price; delivery; reliability; capacity):
+- NorthForge Components: price $4.20; delivery 12 <= 5 [FAIL]; reliability 0.97; capacity 1000 >= 250 [PASS]; INFEASIBLE
+- Kestrel Industrial: price $5.10; delivery 6 <= 5 [FAIL]; reliability 0.94; capacity 600 >= 250 [PASS]; INFEASIBLE
+- Dalby Metalworks: price $3.85; delivery 5 <= 5 [PASS]; reliability 0.71; capacity 250 >= 250 [PASS]; FEASIBLE
+- Verinox Supply: price $6.40; delivery 4 <= 5 [PASS]; reliability 0.99; capacity 800 >= 250 [PASS]; FEASIBLE
+- Oriol Parts Co: price $4.75; delivery 9 <= 5 [FAIL]; reliability 0.88; capacity 500 >= 250 [PASS]; INFEASIBLE
+Recommendation: Dalby Metalworks
+Reason and trade-offs: Dalby Metalworks passes both hard constraints and is the best feasible match for lowest price per unit. The comparison shows all four attributes.
+
+====================================================================
+  Buyer Agent  ->  Factory user
+====================================================================
+Requirements: quantity 250; deadline 5 days; priority lowest price per unit
+Supplier comparison (price; delivery; reliability; capacity):
+- NorthForge Components: price $4.20; delivery 12 <= 5 [FAIL]; reliability 0.97; capacity 1000 >= 250 [PASS]; INFEASIBLE
+- Kestrel Industrial: price $5.10; delivery 6 <= 5 [FAIL]; reliability 0.94; capacity 600 >= 250 [PASS]; INFEASIBLE
+- Dalby Metalworks: price $3.85; delivery 5 <= 5 [PASS]; reliability 0.71; capacity 250 >= 250 [PASS]; FEASIBLE
+- Verinox Supply: price $6.40; delivery 4 <= 5 [PASS]; reliability 0.99; capacity 800 >= 250 [PASS]; FEASIBLE
+- Oriol Parts Co: price $4.75; delivery 9 <= 5 [FAIL]; reliability 0.88; capacity 500 >= 250 [PASS]; INFEASIBLE
+Recommendation: Dalby Metalworks
+Reason and trade-offs: Dalby Metalworks passes both hard constraints and is the best feasible match for lowest price per unit. The comparison shows all four attributes.
+
+Supplier selection multi-agent system   (model: qwen2.5:1.5b)
+
+  1. Run the default factory request
+  2. Enter your own factory request
+  3. Show the supplier catalogue (tool output only)
+  q. Quit
+
+Choose an option: Goodbye.
+
+
+Request 2 - Run 2
+=================
+
+Exact request:
+The factory needs 250 units within 5 days at the lowest possible cost. Recommend the best supplier and explain the decision.
+
+Exact terminal output:
+
+ Container sweng889-supplier-agents-ollama  Running
+
+Supplier selection multi-agent system   (model: qwen2.5:1.5b)
+
+  1. Run the default factory request
+  2. Enter your own factory request
+  3. Show the supplier catalogue (tool output only)
+  q. Quit
+
+Choose an option: 
+Factory request: 
+====================================================================
+  Factory user  ->  Buyer Agent
+====================================================================
+The factory needs 250 units within 5 days at the lowest possible cost. Recommend the best supplier and explain the decision.
+
+====================================================================
+  Buyer Agent: identifying the decision criteria
+====================================================================
+The factory needs 250 units within 5 days at the lowest possible cost. The best supplier should be recommended based on cost-effectiveness and timely delivery.
+
+====================================================================
+  Supplier Analysis Agent  ->  Supplier Information Tool
+====================================================================
+Component: CX-14 hydraulic valve  (prices in USD)
+- NorthForge Components | price per unit: $4.20 | delivery: 12 days | reliability: 0.97 | capacity: 1000 units
+- Kestrel Industrial | price per unit: $5.10 | delivery: 6 days | reliability: 0.94 | capacity: 600 units
+- Dalby Metalworks | price per unit: $3.85 | delivery: 5 days | reliability: 0.71 | capacity: 250 units
+- Verinox Supply | price per unit: $6.40 | delivery: 4 days | reliability: 0.99 | capacity: 800 units
+- Oriol Parts Co | price per unit: $4.75 | delivery: 9 days | reliability: 0.88 | capacity: 500 units
+
+====================================================================
+  Supplier Analysis Agent: recommending
+====================================================================
+Requirements: quantity 250; deadline 5 days; priority lowest price per unit
+Supplier comparison (price; delivery; reliability; capacity):
+- NorthForge Components: price $4.20; delivery 12 <= 5 [FAIL]; reliability 0.97; capacity 1000 >= 250 [PASS]; INFEASIBLE
+- Kestrel Industrial: price $5.10; delivery 6 <= 5 [FAIL]; reliability 0.94; capacity 600 >= 250 [PASS]; INFEASIBLE
+- Dalby Metalworks: price $3.85; delivery 5 <= 5 [PASS]; reliability 0.71; capacity 250 >= 250 [PASS]; FEASIBLE
+- Verinox Supply: price $6.40; delivery 4 <= 5 [PASS]; reliability 0.99; capacity 800 >= 250 [PASS]; FEASIBLE
+- Oriol Parts Co: price $4.75; delivery 9 <= 5 [FAIL]; reliability 0.88; capacity 500 >= 250 [PASS]; INFEASIBLE
+Recommendation: Dalby Metalworks
+Reason and trade-offs: Dalby Metalworks passes both hard constraints and is the best feasible match for lowest price per unit. The comparison shows all four attributes.
+
+====================================================================
+  Buyer Agent  ->  Factory user
+====================================================================
+Requirements: quantity 250; deadline 5 days; priority lowest price per unit
+Supplier comparison (price; delivery; reliability; capacity):
+- NorthForge Components: price $4.20; delivery 12 <= 5 [FAIL]; reliability 0.97; capacity 1000 >= 250 [PASS]; INFEASIBLE
+- Kestrel Industrial: price $5.10; delivery 6 <= 5 [FAIL]; reliability 0.94; capacity 600 >= 250 [PASS]; INFEASIBLE
+- Dalby Metalworks: price $3.85; delivery 5 <= 5 [PASS]; reliability 0.71; capacity 250 >= 250 [PASS]; FEASIBLE
+- Verinox Supply: price $6.40; delivery 4 <= 5 [PASS]; reliability 0.99; capacity 800 >= 250 [PASS]; FEASIBLE
+- Oriol Parts Co: price $4.75; delivery 9 <= 5 [FAIL]; reliability 0.88; capacity 500 >= 250 [PASS]; INFEASIBLE
+Recommendation: Dalby Metalworks
+Reason and trade-offs: Dalby Metalworks passes both hard constraints and is the best feasible match for lowest price per unit. The comparison shows all four attributes.
+
+Supplier selection multi-agent system   (model: qwen2.5:1.5b)
+
+  1. Run the default factory request
+  2. Enter your own factory request
+  3. Show the supplier catalogue (tool output only)
+  q. Quit
+
+Choose an option: Goodbye.
+
+
+No Feasible Supplier Test
+=========================
+
+Exact request:
+The factory needs 2000 units within 1 day.
+
+Exact terminal output:
+
+ Container sweng889-supplier-agents-ollama  Running
+
+Supplier selection multi-agent system   (model: qwen2.5:1.5b)
+
+  1. Run the default factory request
+  2. Enter your own factory request
+  3. Show the supplier catalogue (tool output only)
+  q. Quit
+
+Choose an option: 
+Factory request: 
+====================================================================
+  Factory user  ->  Buyer Agent
+====================================================================
+The factory needs 2000 units within 1 day.
+
+====================================================================
+  Buyer Agent: identifying the decision criteria
+====================================================================
+The factory needs to produce 2000 units within 1 day.
+
+====================================================================
+  Supplier Analysis Agent  ->  Supplier Information Tool
+====================================================================
+Component: CX-14 hydraulic valve  (prices in USD)
+- NorthForge Components | price per unit: $4.20 | delivery: 12 days | reliability: 0.97 | capacity: 1000 units
+- Kestrel Industrial | price per unit: $5.10 | delivery: 6 days | reliability: 0.94 | capacity: 600 units
+- Dalby Metalworks | price per unit: $3.85 | delivery: 5 days | reliability: 0.71 | capacity: 250 units
+- Verinox Supply | price per unit: $6.40 | delivery: 4 days | reliability: 0.99 | capacity: 800 units
+- Oriol Parts Co | price per unit: $4.75 | delivery: 9 days | reliability: 0.88 | capacity: 500 units
+
+====================================================================
+  Supplier Analysis Agent: recommending
+====================================================================
+Requirements: quantity 2000; deadline 1 days; priority none stated; balance all four attributes
+Supplier comparison (price; delivery; reliability; capacity):
+- NorthForge Components: price $4.20; delivery 12 <= 1 [FAIL]; reliability 0.97; capacity 1000 >= 2000 [FAIL]; INFEASIBLE
+- Kestrel Industrial: price $5.10; delivery 6 <= 1 [FAIL]; reliability 0.94; capacity 600 >= 2000 [FAIL]; INFEASIBLE
+- Dalby Metalworks: price $3.85; delivery 5 <= 1 [FAIL]; reliability 0.71; capacity 250 >= 2000 [FAIL]; INFEASIBLE
+- Verinox Supply: price $6.40; delivery 4 <= 1 [FAIL]; reliability 0.99; capacity 800 >= 2000 [FAIL]; INFEASIBLE
+- Oriol Parts Co: price $4.75; delivery 9 <= 1 [FAIL]; reliability 0.88; capacity 500 >= 2000 [FAIL]; INFEASIBLE
+Recommendation: No feasible supplier
+Reason and trade-offs: Every supplier fails at least one hard constraint.
+
+====================================================================
+  Buyer Agent  ->  Factory user
+====================================================================
+Requirements: quantity 2000; deadline 1 days; priority none stated; balance all four attributes
+Supplier comparison (price; delivery; reliability; capacity):
+- NorthForge Components: price $4.20; delivery 12 <= 1 [FAIL]; reliability 0.97; capacity 1000 >= 2000 [FAIL]; INFEASIBLE
+- Kestrel Industrial: price $5.10; delivery 6 <= 1 [FAIL]; reliability 0.94; capacity 600 >= 2000 [FAIL]; INFEASIBLE
+- Dalby Metalworks: price $3.85; delivery 5 <= 1 [FAIL]; reliability 0.71; capacity 250 >= 2000 [FAIL]; INFEASIBLE
+- Verinox Supply: price $6.40; delivery 4 <= 1 [FAIL]; reliability 0.99; capacity 800 >= 2000 [FAIL]; INFEASIBLE
+- Oriol Parts Co: price $4.75; delivery 9 <= 1 [FAIL]; reliability 0.88; capacity 500 >= 2000 [FAIL]; INFEASIBLE
+Recommendation: No feasible supplier
+Reason and trade-offs: Every supplier fails at least one hard constraint.
+
+Supplier selection multi-agent system   (model: qwen2.5:1.5b)
+
+  1. Run the default factory request
+  2. Enter your own factory request
+  3. Show the supplier catalogue (tool output only)
+  q. Quit
+
+Choose an option: Goodbye.

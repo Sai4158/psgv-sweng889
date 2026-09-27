@@ -1,0 +1,56 @@
+@startuml
+title Supplier Selection Multi-Agent System - Use Case Diagram
+
+top to bottom direction
+skinparam shadowing false
+skinparam monochrome true
+skinparam packageStyle rectangle
+
+actor "Factory User" as FactoryUser
+
+rectangle "Supplier Selection Multi-Agent System" {
+  usecase "Submit Factory\nRequest" as SubmitRequest
+  usecase "Receive Supplier\nRecommendation" as ReceiveRecommendation
+
+  package "Buyer Agent" {
+    usecase "Identify Decision\nCriteria" as IdentifyCriteria
+    usecase "Coordinate Supplier\nAnalysis" as CoordinateAnalysis
+    usecase "Return Final\nRecommendation" as ReturnRecommendation
+  }
+
+  package "Supplier Analysis Agent" {
+    usecase "Retrieve Supplier\nInformation" as RetrieveInformation
+    usecase "Compare Suppliers" as CompareSuppliers
+    usecase "Check Quantity and\nDeadline Constraints" as CheckConstraints
+    usecase "Apply User Priority" as ApplyPriority
+    usecase "Recommend Supplier" as RecommendSupplier
+    usecase "Explain\nRecommendation" as ExplainRecommendation
+  }
+
+  package "Supplier Information Tool" {
+    usecase "Return Structured\nSupplier Facts" as ReturnFacts
+  }
+
+  note right of CoordinateAnalysis
+    System goal:
+    Analyze a factory purchasing request
+    and recommend a suitable supplier.
+  end note
+}
+
+FactoryUser --> SubmitRequest
+ReceiveRecommendation --> FactoryUser
+
+SubmitRequest ..> IdentifyCriteria : <<include>>
+SubmitRequest ..> CoordinateAnalysis : <<include>>
+CoordinateAnalysis ..> CompareSuppliers : <<include>>
+CompareSuppliers ..> RetrieveInformation : <<include>>
+RetrieveInformation ..> ReturnFacts : <<include>>
+CompareSuppliers ..> CheckConstraints : <<include>>
+CompareSuppliers ..> ApplyPriority : <<include>>
+CoordinateAnalysis ..> RecommendSupplier : <<include>>
+RecommendSupplier ..> ExplainRecommendation : <<include>>
+ReturnRecommendation ..> RecommendSupplier : <<include>>
+ReceiveRecommendation ..> ReturnRecommendation : <<include>>
+
+@enduml

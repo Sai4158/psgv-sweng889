@@ -1,0 +1,55 @@
+@startuml
+title Supplier Selection Multi-Agent System - Sequence Diagram
+
+skinparam shadowing false
+skinparam monochrome true
+
+actor "Factory User" as FactoryUser
+participant "Buyer Agent" as BuyerAgent
+participant "Local Ollama LLM\n(qwen2.5:1.5b)" as LocalLLM
+participant "Supplier Analysis Agent" as AnalysisAgent
+participant "Supplier Information Tool" as SupplierTool
+
+FactoryUser -> BuyerAgent : Submit factory request
+activate BuyerAgent
+
+BuyerAgent -> BuyerAgent : Start identifying decision criteria
+BuyerAgent -> LocalLLM : Ask for quantity, deadline, and priorities
+activate LocalLLM
+LocalLLM --> BuyerAgent : Return identified criteria
+deactivate LocalLLM
+
+BuyerAgent -> AnalysisAgent : Send request and criteria
+activate AnalysisAgent
+
+AnalysisAgent -> SupplierTool : Request supplier information
+activate SupplierTool
+SupplierTool --> AnalysisAgent : Return structured supplier data
+deactivate SupplierTool
+
+AnalysisAgent -> AnalysisAgent : Parse requested quantity and deadline
+AnalysisAgent -> AnalysisAgent : Check hard constraints\ncapacity >= quantity\ndelivery <= deadline
+AnalysisAgent -> AnalysisAgent : Compare feasible suppliers\nprice, delivery, reliability, capacity
+AnalysisAgent -> AnalysisAgent : Apply explicit user priority\n(for example, lowest cost)
+
+alt One or more suppliers are feasible
+  AnalysisAgent -> AnalysisAgent : Select the best feasible supplier
+else No supplier is feasible
+  AnalysisAgent -> AnalysisAgent : Set result to "No feasible supplier"
+end
+
+AnalysisAgent -> LocalLLM : Ask for the verified response exactly
+activate LocalLLM
+LocalLLM --> AnalysisAgent : Return model response
+deactivate LocalLLM
+AnalysisAgent -> AnalysisAgent : Use exact response or deterministic\nverified fallback if it differs
+
+AnalysisAgent --> BuyerAgent : Return recommendation and explanation
+deactivate AnalysisAgent
+
+BuyerAgent -> BuyerAgent : Check risks\n(starter currently returns no warnings)
+BuyerAgent -> BuyerAgent : Prepare final response
+BuyerAgent --> FactoryUser : Return supplier recommendation
+
+deactivate BuyerAgent
+@enduml
