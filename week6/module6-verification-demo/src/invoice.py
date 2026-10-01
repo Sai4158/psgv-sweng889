@@ -1,10 +1,9 @@
 import time
 
+
 def find_customer(customers, customer_id):
-    for customer in customers:
-        if customer["id"] == customer_id:
-            return customer
-    return None
+    return customers.find_one({"customer_id": customer_id})
+
 
 def calculate_invoice_total(lines):
     subtotal = 0
@@ -19,6 +18,7 @@ def calculate_invoice_total(lines):
     tax = subtotal * 0.08
     return subtotal + tax
 
+
 def create_invoice(customers, customer_id, lines):
     customer = find_customer(customers, customer_id)
     if customer is None:
@@ -29,15 +29,16 @@ def create_invoice(customers, customer_id, lines):
     }
     return invoice
 
+
 if __name__ == "__main__":
-    customers = [
-        {"id": 101, "name": "Avery"},
-        {"id": 102, "name": "Morgan"},
-    ]
+    from pymongo import MongoClient
+
     lines = [
         {"unit_price": 24.00, "quantity": 2},
         {"unit_price": 15.50, "quantity": 1},
         {"unit_price": 8.25, "quantity": 4},
     ]
-    invoice = create_invoice(customers, 999, lines)
-    print(invoice)
+    with MongoClient("mongodb://localhost:27017") as client:
+        customers = client["invoice_app"]["customers"]
+        invoice = create_invoice(customers, 101, lines)
+        print(invoice)

@@ -8,10 +8,27 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from src.invoice import create_invoice
 
 
-CUSTOMERS = [
-    {"id": 101, "name": "Avery"},
-    {"id": 102, "name": "Morgan"},
-]
+class FakeCustomerCollection:
+    def __init__(self, customers):
+        self.customers = customers
+
+    def find_one(self, query):
+        return next(
+            (
+                customer
+                for customer in self.customers
+                if customer["customer_id"] == query["customer_id"]
+            ),
+            None,
+        )
+
+
+CUSTOMERS = FakeCustomerCollection(
+    [
+        {"customer_id": 101, "name": "Avery"},
+        {"customer_id": 102, "name": "Morgan"},
+    ]
+)
 
 
 def test_ac1_creates_invoice_for_existing_customer():
