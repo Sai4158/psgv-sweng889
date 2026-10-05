@@ -1,0 +1,1 @@
+{"id":"03-return","title":"Area calculation has no return","category":"missing return","aliases":["missing return","return"],"bug_lines":[2],"expected_behavior":"Return width multiplied by height, including zero dimensions.","pylint_symbols":[]}

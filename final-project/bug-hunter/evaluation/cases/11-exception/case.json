@@ -1,0 +1,1 @@
+{"id":"11-exception","title":"Quantity parsing hides invalid input","category":"exception-handling bug","aliases":["exception","error","validation"],"bug_lines":[4,5],"expected_behavior":"Convert a valid integer string to int; reject invalid text with ValueError rather than returning zero.","pylint_symbols":["broad-exception-caught"]}

@@ -1,0 +1,1 @@
+{"id":"05-loop","title":"Even count skips the first item","category":"wrong loop boundary","aliases":["loop","off-by-one","boundary"],"bug_lines":[3],"expected_behavior":"Count every even integer, including the first value; empty input returns zero.","pylint_symbols":[]}

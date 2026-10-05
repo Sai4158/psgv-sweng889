@@ -1,0 +1,1 @@
+{"id":"06-variable","title":"Full name uses last name twice","category":"incorrect variable","aliases":["variable","name"],"bug_lines":[2],"expected_behavior":"Join first and last names with one space and strip outer whitespace.","pylint_symbols":[]}

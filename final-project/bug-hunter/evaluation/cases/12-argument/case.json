@@ -1,0 +1,1 @@
+{"id":"12-argument","title":"Money rounding uses one decimal place","category":"incorrect function argument","aliases":["argument","round","precision"],"bug_lines":[2],"expected_behavior":"Use Python round(value, 2) for two decimal places.","pylint_symbols":[]}

@@ -1,0 +1,1 @@
+{"id":"08-none","title":"Missing display name","category":"None handling","aliases":["none","null","missing"],"bug_lines":[2],"expected_behavior":"Return Guest for None or blank strings, otherwise return the trimmed name.","pylint_symbols":[]}

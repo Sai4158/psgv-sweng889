@@ -1,0 +1,1 @@
+{"id":"04-arithmetic","title":"Temperature conversion","category":"incorrect arithmetic","aliases":["arithmetic","conversion","formula"],"bug_lines":[2],"expected_behavior":"Convert Celsius to Fahrenheit using celsius * 9 / 5 + 32.","pylint_symbols":[]}

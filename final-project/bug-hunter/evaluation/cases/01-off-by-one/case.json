@@ -1,0 +1,1 @@
+{"id":"01-off-by-one","title":"Average skips the last value","category":"off-by-one","aliases":["off-by-one","loop boundary"],"bug_lines":[3],"expected_behavior":"Return the arithmetic mean of all values; reject an empty sequence with ValueError.","pylint_symbols":[]}

@@ -1,0 +1,1 @@
+{"id":"02-comparison","title":"Adult age boundary","category":"wrong comparison","aliases":["comparison","boundary"],"bug_lines":[2],"expected_behavior":"Return True for ages at least 18, False below 18.","pylint_symbols":[]}

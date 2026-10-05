@@ -1,0 +1,1 @@
+{"id":"07-boolean","title":"Weekend predicate cannot be true","category":"bad boolean condition","aliases":["boolean","logical","condition"],"bug_lines":[2],"expected_behavior":"Saturday and Sunday are weekends; all other day strings are not.","pylint_symbols":[]}

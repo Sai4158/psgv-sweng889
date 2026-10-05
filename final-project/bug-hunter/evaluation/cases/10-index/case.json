@@ -1,0 +1,1 @@
+{"id":"10-index","title":"Last item uses an out-of-range index","category":"list/index bug","aliases":["index","off-by-one"],"bug_lines":[2],"expected_behavior":"Return the last item; raise ValueError for an empty sequence.","pylint_symbols":[]}
